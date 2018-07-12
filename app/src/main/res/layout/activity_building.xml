@@ -21,8 +21,30 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:titleTextColor="@android:color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            />
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_menu"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Building"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@android:color/white"
+                    style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
