@@ -9,4 +9,7 @@
     <string name="drawer_english">Английский</string>
     <string name="drawer_about_us">О нас</string>
     <string name="drawer_rate_us">Оцените нас</string>
+    <string name="empty_favorite_text">нет любимых постройок</string>
+    <string name="no_search_text">нет таких записей</string>
+    <string name="empty_favorite_plus">знаете ли вы что можете добавить множество строений в любимые. Так сделайте ето побыстрее</string>
 </resources>
