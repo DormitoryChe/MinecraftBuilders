@@ -1,7 +1,8 @@
-package com.example.minecraftbuilders;
+package com.example.minecraftbuilders.activities;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,12 +18,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
 
+import com.example.minecraftbuilders.R;
 import com.example.minecraftbuilders.adapters.ViewPagerAdapter;
+import com.example.minecraftbuilders.handlers.LanguageHandler;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
-    private ViewPager mViewPager;
-    private PagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +47,30 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                         mDrawerLayout.closeDrawers();
                         switch (menuItem.getItemId()) {
-                            case R.id.recipes:
+                            case R.id.buildings:
                                 return true;
-                            case R.id.featured:
+                            case R.id.favourites:
+                                startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
                                 return true;
-                            case R.id.settings:
+                            case R.id.russian:
+                                if(!LanguageHandler.getLanguage(getApplicationContext()).equals("ru")) {
+                                    LanguageHandler.wrap(getApplicationContext(), new Locale("ru"));
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                return true;
+                            case R.id.english:
+                                if(!LanguageHandler.getLanguage(getApplicationContext()).equals("en")) {
+                                    LanguageHandler.wrap(getApplicationContext(), new Locale("en"));
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                return true;
+                            case R.id.about_us:
                                 return true;
                             case R.id.rate_us:
                                 return true;
@@ -57,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        mViewPager = findViewById(R.id.pager);
-        mPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        mViewPager.setAdapter(mPagerAdapter);
+        ViewPager viewPager = findViewById(R.id.pager);
+        PagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
     }
 
     @Override
@@ -69,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Runtime.getRuntime().gc();
     }
 
     @Override
@@ -91,5 +119,12 @@ public class MainActivity extends AppCompatActivity {
         searchView.setIconifiedByDefault(false);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Locale newLocale = new Locale(LanguageHandler.getLanguage(newBase));
+        Context context = LanguageHandler.wrap(newBase, newLocale);
+        super.attachBaseContext(context);
     }
 }

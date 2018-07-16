@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minecraft Builders</string>
+    <string name="search_title">Поиск</string>
+    <string name="search_hint">Поиск...</string>
+    <string name="drawer_building">Постройки</string>
+    <string name="drawer_favourites">Любимые</string>
+    <string name="drawer_russia">Русский</string>
+    <string name="drawer_english">Английский</string>
+    <string name="drawer_about_us">О нас</string>
+    <string name="drawer_rate_us">Оцените нас</string>
+</resources>

@@ -28,6 +28,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
                 <ImageView
+                    android:id="@+id/menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_menu"/>
@@ -48,7 +49,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <com.google.android.youtube.player.YouTubePlayerView
@@ -64,7 +65,7 @@
                     >
 
                     <TextView
-                        android:id="@+id/name"
+                        android:id="@+id/title"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_width="wrap_content"
@@ -86,46 +87,50 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@android:color/darker_gray"/>
-
-                <LinearLayout
+                <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:gravity="center">
+                    android:fillViewport="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:gravity="center">
 
-                    <ImageView
-                        android:id="@+id/screen_1"
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/castle"
-                        android:scaleType="centerCrop"/>
+                        <ImageView
+                            android:id="@+id/screen_1"
+                            android:layout_width="90dp"
+                            android:layout_height="80dp"
+                            android:layout_margin="5dp"
+                            android:src="@drawable/castle"
+                            android:scaleType="centerCrop"/>
 
-                    <ImageView
-                        android:id="@+id/screen_2"
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/castle"
-                        android:scaleType="centerCrop"/>
-                    <ImageView
-                        android:id="@+id/screen_3"
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/castle"
-                        android:scaleType="centerCrop"/>
-                    <ImageView
-                        android:id="@+id/screen_4"
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/castle"
-                        android:scaleType="centerCrop"/>
+                        <ImageView
+                            android:id="@+id/screen_2"
+                            android:layout_width="90dp"
+                            android:layout_height="80dp"
+                            android:layout_margin="5dp"
+                            android:src="@drawable/castle"
+                            android:scaleType="centerCrop"/>
+                        <ImageView
+                            android:id="@+id/screen_3"
+                            android:layout_width="90dp"
+                            android:layout_height="80dp"
+                            android:layout_margin="5dp"
+                            android:src="@drawable/castle"
+                            android:scaleType="centerCrop"/>
+                        <ImageView
+                            android:id="@+id/screen_4"
+                            android:layout_width="90dp"
+                            android:layout_height="80dp"
+                            android:layout_margin="5dp"
+                            android:src="@drawable/castle"
+                            android:scaleType="centerCrop"/>
 
-                </LinearLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
 
                 <View
                     android:layout_width="match_parent"
@@ -139,8 +144,7 @@
                     android:layout_margin="10dp"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textAlignment="center"
-                    android:text="@string/lorem"/>
+                    android:textAlignment="center" />
 
                 <View
                     android:layout_width="match_parent"
@@ -161,7 +165,7 @@
                         android:src="@drawable/vector"/>
 
                     <TextView
-                        android:id="@+id/top_coordinate"
+                        android:id="@+id/x"
                         app:layout_constraintStart_toStartOf="@id/coordination_3"
                         app:layout_constraintTop_toTopOf="@id/coordination_3"
                         android:layout_marginStart="110dp"
@@ -172,18 +176,7 @@
                         android:text="150"/>
 
                     <TextView
-                        android:id="@+id/left_coordinate"
-                        app:layout_constraintStart_toStartOf="@id/coordination_3"
-                        app:layout_constraintBottom_toBottomOf="@id/coordination_3"
-                        android:layout_marginStart="30dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:text="150"/>
-
-                    <TextView
-                        android:id="@+id/right_coordinate"
+                        android:id="@+id/y"
                         app:layout_constraintEnd_toEndOf="@id/coordination_3"
                         app:layout_constraintTop_toTopOf="@id/coordination_3"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -194,6 +187,18 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/holo_red_dark"
                         android:text="150"/>
+
+                    <TextView
+                        android:id="@+id/z"
+                        app:layout_constraintStart_toStartOf="@id/coordination_3"
+                        app:layout_constraintBottom_toBottomOf="@id/coordination_3"
+                        android:layout_marginStart="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:text="150"/>
+
 
                 </android.support.constraint.ConstraintLayout>
 
@@ -226,14 +231,13 @@
                         android:id="@+id/favorite"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_star"
+                        android:src="@drawable/ic_not_favorite"
                         android:scaleType="centerCrop"
                         android:padding="15dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
                         />
-
                 </LinearLayout>
 
             </LinearLayout>

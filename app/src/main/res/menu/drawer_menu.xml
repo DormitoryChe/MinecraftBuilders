@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/settings"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/recipes"
-            android:title="1" />
+            android:id="@+id/buildings"
+            android:title="@string/drawer_building"
+            android:icon="@drawable/ic_menu"/>
         <item
-            android:id="@+id/featured"
-            android:title="2" />
+            android:id="@+id/favourites"
+            android:title="@string/drawer_favourites"
+            android:icon="@drawable/ic_menu"/>
+    </group>
+    <group
+        android:id="@+id/language"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/settings"
-            android:title="3" />
+            android:id="@+id/russian"
+            android:title="@string/drawer_russia"
+            android:icon="@drawable/ic_menu"
+            android:checkable="false"/>
+        <item
+            android:id="@+id/english"
+            android:title="@string/drawer_english"
+            android:icon="@drawable/ic_menu"
+            android:checkable="false"/>
+    </group>
+    <group
+        android:id="@+id/us"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/about_us"
+            android:title="@string/drawer_about_us"
+            android:icon="@drawable/ic_menu"
+            android:checkable="false"/>
         <item
             android:id="@+id/rate_us"
-            android:title="4"
+            android:title="@string/drawer_rate_us"
+            android:icon="@drawable/ic_menu"
             android:checkable="false"/>
     </group>
 </menu>
